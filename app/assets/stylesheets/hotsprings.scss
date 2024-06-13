@@ -1,0 +1,32 @@
+#top{
+    .image{
+        height: 500px;
+        @keyframes infinity-scroll-left {
+            from {
+            transform: translateX(0);
+            }
+            to {
+            transform: translateX(-100%);
+            }
+        }
+        .image_wrap {
+            display: flex;
+            overflow: hidden;
+        }
+        .image_list {
+            display: flex;
+            list-style: none;
+            padding: 0
+        }
+        .image_list--left{
+            animation :infinity-scroll-left 95s infinite linear 0.5s both;
+        }
+        .image_item {
+            width: calc(100vw / 6);
+        }
+        .image_item > img{
+            width: 100%;
+        }
+        margin-bottom: 100px;
+    }
+}

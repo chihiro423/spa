@@ -1,0 +1,27 @@
+
+
+@keyframes infinity-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/*
+IE11対策
+----------------------------*/
+_:-ms-lang(x)::-ms-backdrop,
+.d-demo {
+  display: -ms-grid;
+  overflow: hidden;
+}
+/*----------------------------*/
+
+
+.hotspring{
+  padding: 0.5em 1em;
+  margin: 2em 1em;
+  border: double 10px #a0acd8;
+}

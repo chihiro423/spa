@@ -1,0 +1,13 @@
+<%= form_for @hotspring do |f| %>
+    <%= f.label :温泉名 %>
+    <%= f.text_field :name, :size => 50 %><br>
+    <%= f.label :料金 %>
+    <%= f.text_field :fee, :size => 50 %><br>
+    <%= f.label :おすすめポイント %>
+    <%= f.text_field :point, :size => 50 %><br>
+    <%= f.label :場所 %>
+    <%= f.text_field :spot, :size => 50 %><br>
+    <%= f.label :施設 %>
+    <%= f.text_field :service, :size => 50 %><br>
+    <%= f.submit "編集する" %>
+  <% end %>
