@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'hotsprings/top' => 'hotsprings#top'
   get 'hotsprings/:hotspring_id/likes' => 'likes#create'
   get 'hotsprings/:hotspring_id/likes/:id' => 'likes#destroy'
- 
+  resources :hotsprings
   resources :hotsprings do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]

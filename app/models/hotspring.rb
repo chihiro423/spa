@@ -6,7 +6,7 @@ class Hotspring < ApplicationRecord
 
     has_one_attached :image_top
     has_many_attached :images
-
+    
 
     # Active Storageのバリデーション
     validates :image_top, :images, content_type: { in: %w[image/jpeg image/gif image/png],

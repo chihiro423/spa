@@ -1,6 +1,25 @@
 #top{
+
+    height: 1500px;
+    .background{
+        background-image: url("background.jpg");
+        background-size: cover;
+        width: 100%;
+        height: 520px;
+    }
+    .background2{
+        background-image: url("background2.jpg");
+        background-size: cover;
+        width: 100%;
+        height: 1000px;
+
+    }
+    .setumei{
+        padding-top: 200px;
+        font-size: 25px;
+        text-shadow: 2px 2px 3px #fff;
+    }
     .image{
-        height: 500px;
         @keyframes infinity-scroll-left {
             from {
             transform: translateX(0);
@@ -19,14 +38,109 @@
             padding: 0
         }
         .image_list--left{
-            animation :infinity-scroll-left 95s infinite linear 0.5s both;
+            animation :infinity-scroll-left 60s infinite linear 0.5s both;
         }
-        .image_item {
-            width: calc(100vw / 6);
-        }
-        .image_item > img{
-            width: 100%;
-        }
-        margin-bottom: 100px;
+        // .image_item {
+        //     width: calc(100vw / 6);
+        // }
+        // .image_item > img{
+        //     width: 100%;
+        // }
     }
+    .cat-icon{
+        width: 300px;
+        height: 300px;
+        margin: 10px;
+    }
+}
+
+#index{
+    background-image: url("background.jpg");
+    background-size: cover;
+    width: 100%;
+    background-attachment: fixed;
+    padding-bottom: 50px;
+
+    .search{
+        padding-top: 50px;
+    }
+    .i-text{
+        font-size: xx-large;
+        margin-bottom: 20px;
+    }
+
+    @keyframes infinity-scroll-left {
+        from {
+        transform: translateX(0);
+        }
+        to {
+        transform: translateX(-100%);
+        }
+    }
+  
+    /*
+    IE11対策
+    ----------------------------*/
+    _:-ms-lang(x)::-ms-backdrop,
+    .d-demo {
+        display: -ms-grid;
+        overflow: hidden;
+    }
+    /*----------------------------*/
+  
+  
+    .hotspring{
+        padding: 0.5em 1em;
+        margin: 4em 1em 0em 1em;
+        color: white;
+        font-family: sans-serif;
+        font-weight: bolder;
+        border: double 10px #a0acd8;
+    }
+    .font{
+        color: #fff;
+    }
+    .button{
+    width: 250px;
+    height: 50px;
+    background: #7db4ea5b;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease-in-out;
+    margin: 10px;
+    }
+    .button:hover{
+    border-radius: 25px;
+    }
+}
+    .button2{
+        width: 250px;
+        height: 50px;
+        background: #067ff85b;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s ease-in-out;
+        margin: 10px;
+        text-align: center;
+        justify-content: center;
+    }
+    .i-onsen{
+        width: 100px;
+
+    }
+
+#new{
+    background-image: url("background.jpg");
+    background-size: cover;
+    width: 100%;
+
+    background-attachment: fixed;
 }

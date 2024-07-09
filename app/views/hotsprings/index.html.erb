@@ -1,41 +1,73 @@
-<h3>投稿を検索</h3>
- <%= form_tag({controller:"hotsprings",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search %>
-   <%= submit_tag '検索する'  %>
-<% end %>
-<%= link_to "新規投稿へ", new_hotspring_path %>
-<%= stylesheet_link_tag 'index', :media => "all" %>
-<div class="hotsprings-container">
-  <h3>温泉一覧</h3>
+<div id="index">
+  <div class="search">
+    <div class="i-text">投稿を検索</div>
+    <%= form_tag({controller:"hotsprings",action:"index"}, method: :get) do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag '検索する'  %>
+    <% end %>
+  </div>
+  
+  <a href="http://localhost:3000/hotsprings/new" class="button">新規投稿ページ</a>
+
+  <div class="hotsprings-container">
+    <div class="i-text">温泉一覧</div>
     <% @hotsprings.each do |t| %>
       <div class="hotspring">
-        <%= t.user.email %>
-        <%= t.name %>
-        <%= t.point %>
-        <%= t.spot %>
-        <%= t.fee %>
-        <%= t.service %>
         <%= image_tag t.resize_image_top if t.image_top.attached? %>
-        <%= t.created_at.strftime('%Y年%m月%d日 %H時%M分')%>
+        <div class="onsen">
+          ユーザーアドレス:
+          <%= t.user.email %> 
+        </div>
+        <div class="onsen">
+          温泉名:
+          <%= t.name %>
+        </div>
+        <div class="onsen">
+          特徴:
+          <%= t.point %>
+        </div>
+        <div class="onsen">
+          住所:
+          <%= t.spot %>
+        </div>
+
+
+        <div class="onsen">
+          料金:
+          <%= t.fee %>円（大人）
+        </div>
+        <div class="onsen">
+          サービス:
+          <%= t.service %>
+        </div>
+        <div class="onsen">
+          投稿時間:
+          <%= t.created_at.strftime('%Y年%m月%d日 %H時%M分')%>
+        </div>
 
         <% if user_signed_in? %>
           <% if current_user.already_liked?(t) %>
               <%= link_to hotspring_like_path(id: t.id, hotspring_id: t.id), method: :delete do %>
-                  <p>いいねを取り消す</p><%= t.likes.count %>
+                <div class="font">
+                  いいねを取り消す<%= t.likes.count %>
+                </div>
               <% end %>
           <% else %>
-              <%= link_to hotspring_likes_path(id: t.id, hotspring_id: t.id), method: :post do %>
-                  <p>いいね</p><%= t.likes.count %>
-              <% end %>
+            <%= link_to hotspring_likes_path(id: t.id, hotspring_id: t.id), method: :post do %>
+              <div class="font">
+                いいね<%= t.likes.count %>
+              </div>
+            <% end %>
           <% end %>
         <% else %>
-            <p>いいねの数 = </p><%= t.likes.count %>
+          <p>いいねの数 = </p><%= t.likes.count %>
         <% end %>
-        <%= link_to "詳細", hotspring_path(t.id) %>
-        <%= link_to "編集", edit_hotspring_path(t.id) %> 
-        <%= link_to "削除", hotspring_path(t.id), method: :delete %>
-        <p class="time"><%= t.created_at %></p>
+        <div class="i-onsen">
+          <%= link_to "詳細", hotspring_path(t.id), class:"button" %>  
+          <%= link_to "編集", edit_hotspring_path(t.id), class:"button" %>  
+          <%= link_to "削除", hotspring_path(t.id), method: :delete, class:"button2" %>
+        </div>
       </div>
     <% end %>
-  
+  </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_11_105205) do
+ActiveRecord::Schema.define(version: 2024_06_18_120402) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2024_06_11_105205) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "hotspring_tag_relations", force: :cascade do |t|
+    t.integer "hotspring_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hotspring_id"], name: "index_hotspring_tag_relations_on_hotspring_id"
+    t.index ["tag_id"], name: "index_hotspring_tag_relations_on_tag_id"
+  end
+
   create_table "hotsprings", force: :cascade do |t|
     t.string "name"
     t.text "point"
@@ -71,6 +80,12 @@ ActiveRecord::Schema.define(version: 2024_06_11_105205) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,6 +102,8 @@ ActiveRecord::Schema.define(version: 2024_06_11_105205) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "hotsprings"
   add_foreign_key "comments", "users"
+  add_foreign_key "hotspring_tag_relations", "hotsprings"
+  add_foreign_key "hotspring_tag_relations", "tags"
   add_foreign_key "likes", "hotsprings"
   add_foreign_key "likes", "users"
 end

@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/~~~~~~"  crossorigin="anonymous"></script> 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <header>
-  <div class="header-list">
-   <ul>
-    <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-    <li><%= link_to "ホーム", new_hotspring_path %></li>
-    <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
-    <% end %>
-   </ul>
-  </div>
- </header>
- <main>
-    <%= yield %>
+    <header>
+    <h1><%= link_to "温泉日記", hotsprings_top_path %></h1>
+      <div class="header-list">
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to "温泉一覧", hotsprings_path %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "一覧", hotsprings_path %></li>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="background">
+      </div>
+      <%= yield %>
     </main>
-    <footer>
-    <p>Copyright © Chihiro Ishikawa All Rights Reserved.</p>
-  </footer>
   </body>
 </html>

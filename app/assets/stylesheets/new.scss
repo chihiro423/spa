@@ -4,7 +4,7 @@
     border: solid #d3def1;
     border-radius: 10px;
     text-align: center;
-    background-color: #d3def1;
+    background-color: #9bd3eb;
   }
   .title {
     font-size: 32px;
@@ -18,6 +18,20 @@
   input[type="submit"] {
     width: 200px;
     font-size: 20px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .button{
+    width: 250px;
+    height: 50px;
+    background: #5d82a2;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease-in-out;
+  }
+  .button:hover{
+    border-radius: 25px;
   }

@@ -4,17 +4,17 @@ class HotspringsController < ApplicationController
     def top
     end
     def index
-      if params[:search] == nil
-        @hotsprings= Hotspring.all
-      elsif params[:search] == ''
-        @hotsprings= Hotspring.all
+      if params[:search] != nil && params[:search] != ''
+        search = params[:search]
+        @hotsprings = Hotspring.joins(:user).where("email LIKE ? OR name LIKE ? OR point LIKE ? OR spot LIKE ? OR fee LIKE ? OR service LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
       else
-        @hotsprings = Hotspring.where("body LIKE ? ",'%' + params[:search] + '%')
-    end
-  end
-    def new
-        @hotspring = Hotspring.new
+        @hotsprings = Hotspring.all
       end
+    end
+
+    def new
+      @hotspring = Hotspring.new
+    end
     
       def create
         hotspring = Hotspring.new(hotspring_params)
@@ -37,7 +37,7 @@ class HotspringsController < ApplicationController
       def update
         hotspring = Hotspring.find(params[:id])
         if hotspring.update(hotspring_params)
-          redirect_to :action => "show", :id => hotspring.id
+          redirect_to :action => "index"
         else
           redirect_to :action => "new"
         end
@@ -50,6 +50,6 @@ class HotspringsController < ApplicationController
 
       private
       def hotspring_params
-        params.require(:hotspring).permit(:name, :fee, :point, :spot, :service, :image_top , images: [])
+        params.require(:hotspring).permit(:name, :fee, :point, :spot, :service, :image_top , :images, tag_ids: [])
       end
     end
